@@ -1,26 +1,28 @@
 import React, { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import Message from "./message";
-import Header from "./header";
-import Main from "./main";
-import Aside from "./aside";
-import Footer from "./footer";
+import { createRoot } from "react-dom";
+import Navbar from './components/Navbar';
+import Header from "./Header";
+import Carousel from "./components/Carousel";
+import RegistrationForm from "./components/RegistrationForm";
+import ServiceDescription from "./components/ServiceDescription"; 
 
+const App = () => {
+  return (
+    <StrictMode>
+      <Navbar />
+      <Header />
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: '1', marginRight: '20px' }}>
+          <Carousel style={{ height: '400px' }} /> 
+        </div>
+        <div>
+          <RegistrationForm />
+        </div>
+      </div>
+      <ServiceDescription /> 
+    </StrictMode>
+  );
+};
 
 const root = createRoot(document.getElementById("root"));
-root.render(
-    <StrictMode>
-        <Header></Header>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8">
-                    <Main></Main>
-                </div>
-                <div className="col-md-4">
-                    <Aside></Aside>
-                </div>
-            </div>
-        </div>
-        <Footer></Footer>
-    </StrictMode>
-);
+root.render(<App />);
